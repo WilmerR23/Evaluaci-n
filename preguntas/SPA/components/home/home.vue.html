@@ -1,0 +1,87 @@
+<template>
+    <div>
+        <h1>
+            Preguntas
+        </h1>
+        <div class="row">
+            <div class="col-md-4">
+                <multiselect :options="options" :allowEmpty="true" placeholder="Examen" label="descripcion" track-by="descripcion">
+                    <span slot="noResult"><input type="hidden" v-model="val"/>Cambia el criterio de la busqueda.
+                        <button class="btn btn-primary" @click="addExam">Agregar</button>
+                    </span>
+                </multiselect>
+            </div>
+            <div class="col-md-4">
+                <multiselect :options="options" :allowEmpty="true" placeholder="Pregunta" label="name" track-by="name">
+                    <span slot="noResult">Cambia el criterio de la busqueda.
+                        <button class="btn btn-primary">Agregar</button>
+                    </span>
+                </multiselect>
+            </div>
+            <pre class="language-json"><code>{{ val }}</code></pre>
+            <input type="button" @click="onClick" class="btn btn-primary" value="Opcion" />
+            <input type="button" class="btn btn-primary" @click="send" value="Enviar" />
+        </div>
+
+        <div v-for="(item,index) in model.opciones" class="mt-10">
+            <div class="input-group col-md-8">
+                <!-- <input type="text" v-model="item.texto" class="form-control" placeholder="Opcion" /> -->
+                <multiselect :options="options" :allowEmpty="true" placeholder="Select one" label="name" track-by="name">
+                    <span slot="noResult">Cambia el contenido de la busqueda.
+                        <button class="btn btn-primary">Agregar</button>
+                    </span>
+                </multiselect>
+
+                <!-- <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true"
+                    placeholder="Pick some" label="name" track-by="name" :preselect-first="true">
+                    <template slot="selection" slot-scope="{ values, search, isOpen }">
+                        <span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} options selected</span>
+                    </template>
+                </multiselect> -->
+
+                <span @click="onQuit(index)" class="pointer input-group-addon btnAppend spanStyle">
+                    <i class="glyphicon glyphicon-trash iStyle"></i>
+                </span>
+
+                <span @click="onCheck(index)" class="pointer input-group-addon btnAppend spanStyle-green">
+                    <i class="glyphicon glyphicon-check iStyle-green"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style>
+    .mt-10 {
+        margin-top: 10px;
+    }
+
+    .spanStyle {
+        border-color: #dc3545;
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .spanStyle:hover {
+        background-color: #d8172a;
+    }
+
+    .spanStyle-green {
+        border-color: #47a247;
+        background-color: #5cb75c;
+        color: white;
+    }
+
+    .spanStyle-green:hover {
+        background-color: #449d43;
+    }
+
+    .pointer {
+        cursor: pointer;
+    }
+</style>
+
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+
+<script src="./home.ts"></script>

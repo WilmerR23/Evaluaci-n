@@ -1,0 +1,145 @@
+<!-- <template>
+    <div>
+        <h1>Registro</h1>
+
+        <div class="row">
+            <div class="col-md-4 mt-2">
+                <input class="form-control" type="text" v-model="model.nombres" placeholder="Nombre" />
+            </div>
+            <div class="col-md-4 mt-2">
+                <input class="form-control" type="text" v-model="model.apellidos" placeholder="Apellidos" />
+            </div>
+            <div class="col-md-4 mt-2">
+                <input class="form-control" v-mask="'###-######-#'" type="text" v-model="model.cedula" placeholder="Cedula" />
+            </div>
+            <div class="col-md-4 mt-2">
+                <input class="form-control" type="text" v-model="model.celular" placeholder="Celular" />
+            </div>
+            <div class="col-md-4 mt-2">
+                <input class="form-control" type="text" v-model="model.calle" placeholder="Calle" />
+            </div>
+            <div class="col-md-4 mt-2">
+                <input class="form-control" type="text" v-model="model.email" placeholder="Email" />
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px; padding-left: 15px;">
+            <div class="col-md-4">
+                <button class="row btn" :class="model.datosGenId == 0 ? 'btn-primary' : 'btn-warning'" @click="onSubmit">{{labelButton}}</button>
+            </div>
+        </div>
+
+
+        Has to be commented
+        <loading-component :isLoading="doLoading" />
+        <div class="row mt-2" style="padding-left: 10px;">
+            <div class="col-md-3" style="margin-left: -10px;">
+                <div class="input-group">
+                    <input type="text" class="form-control" v-model="searchText" placeholder="Buscar" aria-label="Buscar"
+                        aria-describedby="basic-addon2" />
+                    <span @click="buscarData" class="input-group-addon btnAppend">
+                        <i class="glyphicon glyphicon-search" style="color: floralwhite"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <select v-model="selectOption" class="form-control">
+                        <option selected>Seleccionar</option>
+                    <option :value="index" v-for="(option,index) in options">{{option}}</option>
+                </select>
+            </div>
+            <table style="margin-top: 10px;" class="table">
+                <thead>
+                    <tr>
+                        <td>Nombres</td>
+                        <td>Apellidos</td>
+                        <td>Cedula</td>
+                        <td>Celular</td>
+                        <td>Calle</td>
+                        <td>Email</td>
+                        <td>Opciones</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="persona in personas">
+                        <td>{{ persona.nombres}}</td>
+                        <td>{{ persona.apellidos}}</td>
+                        <td>{{ persona.cedula}}</td>
+                        <td>{{ persona.celular}}</td>
+                        <td>{{ persona.calle}}</td>
+                        <td>{{ persona.email}}</td>
+                        <td>
+                            <button class="btn btn-warning" @click="edit(persona)">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                            <button class="btn btn-danger" @click="eliminate(persona.datosGenId)">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div v-if="!personas.length" class="col-md-12" style="text-align: center;">
+                <span class="mt-2">
+                    No hay registros
+                </span>
+            </div>
+        </div>
+
+        <datatable @onEdit="edit" 
+        @onDelete="eliminate" 
+          :notShow="['usuarioGestId', 'contraseña','datosGenId']"
+          :hasToGetData="onOperationDone" 
+          :modelDtoName="modelDto.constructor.name" 
+          apiControllerName="registro"
+          :propNamesArray="['Nombres','Apellidos','Cedula','Celular','Email','Calle']">
+
+        </datatable>
+    </div>
+</template>
+
+<style>
+    .mt-2 {
+        margin-top: 10px;
+    }
+
+    .btnAppend {
+        background: #62d8fbe0;
+        border-color: #62d8fbe0;
+    }
+
+    .btnAppend:hover {
+        background: #6dc6e0;
+        cursor: pointer;
+        border-color: #6dc6e0;
+    }
+</style>
+
+<script src="./registro.ts"></script> -->
+
+
+
+<template>
+    <div>
+        Hey
+    </div>
+</template>
+
+
+<style>
+    .mt-2 {
+        margin-top: 10px;
+    }
+
+    .btnAppend {
+        background: #62d8fbe0;
+        border-color: #62d8fbe0;
+    }
+
+    .btnAppend:hover {
+        background: #6dc6e0;
+        cursor: pointer;
+        border-color: #6dc6e0;
+    }
+</style>
+<script src="./registro.ts"></script>

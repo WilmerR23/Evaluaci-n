@@ -1,0 +1,38 @@
+<template>
+    <div>
+        
+        <h1>Usuarios</h1>
+        <div class="row">
+            <div class="col-md-4 mt-2">
+                <input class="form-control" type="text" v-model="model.usuario" placeholder="Nombre de usuario" />
+            </div>
+            <div class="col-md-4 mt-2">
+                <input class="form-control" :disabled="model.usuarioGestId != 0" type="password" v-model="model.contraseña" placeholder="Contraseña" />
+            </div>
+            <div class="col-md-4 mt-2">
+                <input class="form-control" :disabled="model.usuarioGestId != 0" type="password" v-model="claveRepeat" placeholder="Repite la contraseña" />
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 10px; padding-left: 15px;">
+            <div class="col-md-4">
+                <button class="row btn" :class="model.usuarioGestId == 0 ? 'btn-primary' : 'btn-warning'" @click="onSubmit">{{labelButton}}</button>
+            </div>
+        </div>
+
+        <datatable @onEdit="editUser" @onDelete="deleteUser" :hasToGetData="onOperationDone" :notShow="['usuarioGestId', 'contraseña']" :modelDto="modelDto"
+            apiControllerName="usuario">
+
+        </datatable>
+    </div>
+</template>
+
+
+<style>
+    .mt-4 {
+        margin-top: 40px;
+    }
+</style>
+
+
+<script src="./usuario.ts"></script>

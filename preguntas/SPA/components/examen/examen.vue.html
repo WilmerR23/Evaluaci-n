@@ -1,0 +1,28 @@
+<template>
+    <div>
+        <h1>
+            Examen
+        </h1>
+        <div class="row">
+            <div class="col-md-4">
+                <multiselect @select="onSelect" selectLabel="Seleccionar" :options="options" :allowEmpty="true" placeholder="Examen" label="descripcion" track-by="descripcion">
+                    <span slot="noResult"><input type="hidden" v-model="val"/>Cambia el criterio de la busqueda.
+                        <button class="btn btn-primary" @click="addExam">Agregar</button>
+                    </span>
+                </multiselect>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+
+        <div v-for="(item,index) in model.opciones" class="mt-10">
+            <div class="input-group col-md-8">
+                <input type="text" v-model="item.texto" class="form-control" placeholder="Opcion" />
+
+           </div>
+        </div>
+    </div>
+</template>
+
+<script src="./examen.ts"></script>

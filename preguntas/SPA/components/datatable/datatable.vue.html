@@ -1,0 +1,65 @@
+<template>
+    <div>
+        <loading-component :isLoading="doLoading" />
+        <div class="row" style="padding-left: 10px;">
+            <div class="col-md-3 mt-2" style="margin-left: -10px;">
+                <div class="input-group">
+                    <input type="text" class="form-control" v-model="searchText" placeholder="Buscar" aria-label="Buscar"
+                        aria-describedby="basic-addon2" />
+                    <span @click="buscarData" class="input-group-addon btnAppend">
+                        <i class="glyphicon glyphicon-search" style="color: floralwhite"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 mt-2">
+                <select v-model="selectOption" class="form-control">
+                        <option selected>Seleccionar</option>
+                    <option v-if="showColumnData(option)" :value="index" v-for="(option,index) in options">{{option.charAt(0).toLocaleUpperCase() + option.slice(1)}}</option>
+                </select>
+            </div>
+
+            <table style="margin-top: 10px; text-align:center;" class="table">
+                <thead>
+                    <tr>
+                        <td v-if="showColumnData(tableColumnDescription)" v-for="tableColumnDescription in options">{{tableColumnDescription.charAt(0).toLocaleUpperCase() + tableColumnDescription.slice(1)}}</td>
+                        <td>Opciones</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in data">
+                        <td v-if="showColumnData(element)" v-for="element in Object.keys(item)">{{item[element]}}</td>
+
+                        <td>
+                            <button class="btn btn-warning" @click="editItem(item)">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </button>
+                            <button class="btn btn-danger" @click="deleteItem(item)">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div v-if="!data.length" class="col-md-12" style="text-align: center;">
+                <span class="mt-2">
+                    No hay registros
+                </span>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style>
+    .btnAppend {
+        background: #62d8fbe0;
+        border-color: #62d8fbe0;
+    }
+
+    .btnAppend:hover {
+        background: #6dc6e0;
+        cursor: pointer;
+        border-color: #6dc6e0;
+    }
+</style>
+
+<script src="./datatable.ts"></script>

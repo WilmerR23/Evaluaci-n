@@ -1,0 +1,2 @@
+
+declare module 'v-mask';
